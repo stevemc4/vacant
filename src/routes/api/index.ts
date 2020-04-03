@@ -2,7 +2,7 @@ import { ServerRoute, HandlerDecorations } from '@hapi/hapi'
 
 const api: ServerRoute[] = [
   {
-    path: '/',
+    path: '',
     method: 'GET',
     handler: (): HandlerDecorations => {
       return 'hello world'

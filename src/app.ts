@@ -7,7 +7,10 @@ import { database } from './modules/database'
 dotenv.config()
 
 const server = new hapi.Server({
-  port: process.env.VACANT_PORT
+  port: process.env.VACANT_PORT,
+  router: {
+    stripTrailingSlash: true
+  }
 })
 
 async function boostrap (): Promise<void> {
