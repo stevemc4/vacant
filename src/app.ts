@@ -1,9 +1,9 @@
+import { Connect } from './modules/database'
 import hapi from '@hapi/hapi'
 import joi from '@hapi/joi'
 import dotenv from 'dotenv'
 
 import routes from './routes'
-import { database } from './modules/database'
 
 dotenv.config()
 
@@ -17,7 +17,7 @@ const server = new hapi.Server({
 async function boostrap (): Promise<void> {
   server.validator(joi)
   server.route(routes)
-  await database.connect()
+  await Connect()
   await server.start()
   console.log(`Server started on port ${process.env.VACANT_PORT}`)
 }
