@@ -11,7 +11,7 @@ interface Response {
   data?: unknown;
 }
 
-function StandardResponse (data: ResponseParam): Response {
+function standardResponse (data: ResponseParam): Response {
   return {
     status: data.status || 200,
     error: null,
@@ -20,4 +20,4 @@ function StandardResponse (data: ResponseParam): Response {
   }
 }
 
-export default StandardResponse
+export default standardResponse
