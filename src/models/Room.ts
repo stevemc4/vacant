@@ -6,5 +6,5 @@ export default class Room extends BaseEntity {
   id: number
 
   @Column()
-  roomName: string;
+  name: string;
 }
