@@ -17,7 +17,8 @@ const api: ServerRoute[] = [
     options: {
       validate: {
         payload: {
-          name: Joi.string().required()
+          name: Joi.string().required(),
+          type: Joi.number().required()
         }
       }
     }
@@ -50,7 +51,8 @@ const api: ServerRoute[] = [
         },
         payload: {
           name: Joi.string().required(),
-          enabled: Joi.boolean().required()
+          enabled: Joi.boolean().required(),
+          type: Joi.number().required()
         }
       }
     }

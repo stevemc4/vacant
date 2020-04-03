@@ -3,11 +3,13 @@ import boom from '@hapi/boom'
 import { database } from '../modules/database'
 import Room from '../models/Room'
 import standardResponse from '../util/standardResponse'
+import RoomType from '../models/RoomType'
 
 async function create (h: Request): Promise<HandlerDecorations> {
   try {
     interface Payload {
       name: string;
+      type: number;
     }
 
     const payload = h.payload as Payload
@@ -22,6 +24,11 @@ async function create (h: Request): Promise<HandlerDecorations> {
 
     const room = new Room()
     room.name = payload.name
+    const roomType = await RoomType.findOne({ id: payload.type })
+    if (!roomType) {
+      return boom.badRequest('Unknown room type ID sent')
+    }
+    room.type = roomType
     const savedRoom = await database.manager.save(room)
     return standardResponse({
       status: 201,
@@ -60,6 +67,7 @@ async function edit (h: Request): Promise<HandlerDecorations> {
     interface Payload {
       name: string;
       enabled: boolean;
+      type: number;
     }
 
     const id = Number.parseInt(h.params.id, 10)
@@ -68,6 +76,11 @@ async function edit (h: Request): Promise<HandlerDecorations> {
     if (room) {
       room.name = payload.name
       room.enabled = payload.enabled
+      const roomType = await RoomType.findOne({ id: payload.type })
+      if (!roomType) {
+        return boom.badRequest('Unknown room type ID sent')
+      }
+      room.type = roomType
       await database.manager.save(room)
       return standardResponse({
         message: `Successfully changed room ID ${id}`
