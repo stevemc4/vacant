@@ -1,4 +1,4 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, Index } from 'typeorm'
 
 @Entity()
 export default class Room extends BaseEntity {
@@ -8,6 +8,9 @@ export default class Room extends BaseEntity {
   @Column({
     unique: true,
     nullable: false
+  })
+  @Index({
+    unique: true
   })
   name: string;
 }
