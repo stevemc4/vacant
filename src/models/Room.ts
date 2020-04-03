@@ -5,6 +5,9 @@ export default class Room extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({
+    unique: true,
+    nullable: false
+  })
   name: string;
 }
