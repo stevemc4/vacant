@@ -1,4 +1,5 @@
 import hapi from '@hapi/hapi'
+import joi from '@hapi/joi'
 import dotenv from 'dotenv'
 
 import routes from './routes'
@@ -14,6 +15,7 @@ const server = new hapi.Server({
 })
 
 async function boostrap (): Promise<void> {
+  server.validator(joi)
   server.route(routes)
   await database.connect()
   await server.start()
