@@ -59,6 +59,7 @@ async function edit (h: Request): Promise<HandlerDecorations> {
   try {
     interface Payload {
       name: string;
+      enabled: boolean;
     }
 
     const id = Number.parseInt(h.params.id, 10)
@@ -66,6 +67,7 @@ async function edit (h: Request): Promise<HandlerDecorations> {
     const room = await Room.findOne({ id })
     if (room) {
       room.name = payload.name
+      room.enabled = payload.enabled
       await database.manager.save(room)
       return standardResponse({
         message: `Successfully changed room ID ${id}`

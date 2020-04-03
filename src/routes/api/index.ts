@@ -47,6 +47,10 @@ const api: ServerRoute[] = [
       validate: {
         params: {
           id: Joi.number().required()
+        },
+        payload: {
+          name: Joi.string().required(),
+          enabled: Joi.boolean().required()
         }
       }
     }
