@@ -1,4 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, Index } from 'typeorm'
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, Index, ManyToOne, JoinTable } from 'typeorm'
+import RoomType from './RoomType'
 
 @Entity()
 export default class Room extends BaseEntity {
@@ -23,4 +24,13 @@ export default class Room extends BaseEntity {
     default: true
   })
   enabled: boolean;
+
+  @ManyToOne(() => RoomType, {
+    onDelete: 'RESTRICT',
+    onUpdate: 'CASCADE',
+    nullable: false,
+    eager: true
+  })
+  @JoinTable()
+  type: RoomType
 }
