@@ -13,4 +13,14 @@ export default class Room extends BaseEntity {
     unique: true
   })
   name: string;
+
+  @Column({
+    default: true
+  })
+  available: boolean;
+
+  @Column({
+    default: true
+  })
+  enabled: boolean;
 }
