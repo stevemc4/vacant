@@ -5,7 +5,7 @@ interface ResponseParam {
 }
 
 interface Response {
-  status: number;
+  statusCode: number;
   error: null;
   message: string;
   data?: unknown;
@@ -13,7 +13,7 @@ interface Response {
 
 function standardResponse (data: ResponseParam): Response {
   return {
-    status: data.status || 200,
+    statusCode: data.status || 200,
     error: null,
     message: data.message || '',
     data: data.data
