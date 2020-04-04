@@ -14,6 +14,11 @@ class RoomType extends BaseEntity {
     type: 'bigint'
   })
   rate: number
+
+  @Column({
+    default: true
+  })
+  enabled: boolean
 }
 
 export default RoomType
