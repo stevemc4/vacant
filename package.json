@@ -21,6 +21,7 @@
     "@hapi/boom": "^9.1.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
+    "@types/bcrypt": "^3.0.0",
     "@types/hapi__hapi": "^19.0.2",
     "@types/node": "^13.11.0",
     "bcrypt": "^4.0.1",
