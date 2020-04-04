@@ -15,7 +15,8 @@ class User extends BaseEntity {
   username: string;
 
   @Column({
-    length: 64
+    length: 64,
+    select: false
   })
   password: string;
 
