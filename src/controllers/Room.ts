@@ -97,11 +97,11 @@ async function del (h: Request): Promise<HandlerDecorations> {
   try {
     const id = Number.parseInt(h.params.id, 10)
     const room = await Room.findOne({ id })
-    if (room) {
+    if (id && room) {
       room.enabled = false
       await database.manager.save(room)
       return standardResponse({
-        message: `Successfully deleted room iD ${id}`
+        message: `Successfully deleted room ID ${id}`
       })
     }
     return boom.notFound(`Room with ID "${id}" not found`)
