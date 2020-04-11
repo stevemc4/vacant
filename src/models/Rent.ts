@@ -16,7 +16,9 @@ class Rent extends BaseEntity {
   @Column()
   days: number;
 
-  @Column()
+  @Column({
+    nullable: true
+  })
   checkOut: Date;
 
   @ManyToOne(() => Guest, {
