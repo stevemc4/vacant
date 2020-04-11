@@ -9,7 +9,7 @@ class Guest extends BaseEntity {
   @Column({
     unique: true
   })
-  @Index({
+  @Index('guestIdIndex', {
     unique: true
   })
   guestId: string;

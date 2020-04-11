@@ -10,7 +10,7 @@ export default class Room extends BaseEntity {
     unique: true,
     nullable: false
   })
-  @Index({
+  @Index('roomNameIndex', {
     unique: true
   })
   name: string;
