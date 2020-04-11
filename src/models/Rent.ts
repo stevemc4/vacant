@@ -1,5 +1,6 @@
-import { BaseEntity, PrimaryGeneratedColumn, OneToOne, CreateDateColumn, Column, Entity } from 'typeorm'
+import { BaseEntity, PrimaryGeneratedColumn, OneToOne, CreateDateColumn, Column, Entity, ManyToOne } from 'typeorm'
 import Room from './Room'
+import Guest from './Guest'
 
 @Entity()
 class Rent extends BaseEntity {
@@ -17,6 +18,12 @@ class Rent extends BaseEntity {
 
   @Column()
   checkOut: Date;
+
+  @ManyToOne(() => Guest, {
+    onUpdate: 'CASCADE',
+    onDelete: 'RESTRICT'
+  })
+  guest: Guest
 }
 
 export default Rent

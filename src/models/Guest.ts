@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Index, ManyToOne } from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Index, OneToMany } from 'typeorm'
 import Rent from './Rent'
 
 @Entity()
@@ -17,11 +17,11 @@ class Guest extends BaseEntity {
   @Column()
   name: string;
 
-  @ManyToOne(() => Rent, {
+  @OneToMany(() => Rent, rent => rent.guest, {
     onUpdate: 'CASCADE',
     onDelete: 'RESTRICT'
   })
-  rents: Rent
+  rents: Rent[]
 }
 
 export default Guest
