@@ -19,7 +19,8 @@ class Guest extends BaseEntity {
 
   @OneToMany(() => Rent, rent => rent.guest, {
     onUpdate: 'CASCADE',
-    onDelete: 'RESTRICT'
+    onDelete: 'RESTRICT',
+    cascade: true
   })
   rents: Rent[]
 }

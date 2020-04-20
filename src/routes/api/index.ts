@@ -3,6 +3,7 @@ import { ServerRoute, HandlerDecorations } from '@hapi/hapi'
 import room from './room'
 import roomType from './type'
 import user from './user'
+import rent from './rent'
 
 const api: ServerRoute[] = [
   {
@@ -14,7 +15,8 @@ const api: ServerRoute[] = [
   },
   ...room,
   ...roomType,
-  ...user
+  ...user,
+  ...rent
 ]
 
 export default api.map(item => {
